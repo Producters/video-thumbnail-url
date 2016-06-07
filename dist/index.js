@@ -18,8 +18,9 @@ var _requestPromise2 = _interopRequireDefault(_requestPromise);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 //extract id from url path
-var RE_VIMEO = /^(?:\/video|\/channels\/[\w-]+)?\/(\d+)$/;
+var RE_VIMEO = /^(?:\/video|\/channels\/[\w-]+|\/groups\/[\w-]+\/videos)?\/(\d+)$/;
 var RE_YOUTUBE = /^(?:\/embed)?\/([\w-]{10,12})$/;
+var RE_FACEBOOK = /^\/[\w-]+\/videos\/(\d+)(\/)?$/;
 
 function getThumbnailURL(url) {
     return _bluebird2.default.try(function () {
@@ -57,6 +58,23 @@ function getThumbnailURL(url) {
                 }).then(function (data) {
                     if (data) {
                         return data[0].thumbnail_large;
+                    }
+                });
+            }
+        }
+
+        //facebook
+        if (['facebook.com', 'www.facebook.com'].indexOf(urlobj.host) !== -1) {
+            var _match2 = RE_FACEBOOK.exec(urlobj.pathname);
+
+            if (_match2) {
+                var _video_id2 = _match2[1];
+                return (0, _requestPromise2.default)({
+                    uri: 'https://graph.facebook.com/' + _video_id2,
+                    json: true
+                }).then(function (data) {
+                    if (data) {
+                        return data.picture;
                     }
                 });
             }

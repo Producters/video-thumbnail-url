@@ -5,6 +5,7 @@ import rp from 'request-promise';
 //extract id from url path
 const RE_VIMEO = /^(?:\/video|\/channels\/[\w-]+|\/groups\/[\w-]+\/videos)?\/(\d+)$/;
 const RE_YOUTUBE = /^(?:\/embed)?\/([\w-]{10,12})$/;
+const RE_FACEBOOK = /^\/[\w-]+\/videos\/(\d+)(\/)?$/;
 
 export default function getThumbnailURL(url) {
     return bluebird.try(() => {
@@ -45,6 +46,24 @@ export default function getThumbnailURL(url) {
                         return data[0].thumbnail_large;
                     }
                 }); 
+            }
+        }
+
+        //facebook
+        if (['facebook.com', 'www.facebook.com'].indexOf(urlobj.host) !== -1) {
+            const match = RE_FACEBOOK.exec(urlobj.pathname);
+            
+            if (match) {
+                const video_id = match[1];
+                return rp({
+                    uri: `https://graph.facebook.com/${video_id}`,
+                    json: true
+                })
+                .then(data => {
+                    if (data) {
+                        return data.picture
+                    }
+                });
             }
         }
         return null;
