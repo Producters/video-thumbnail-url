@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Producters/video-thumbnail-url.svg?branch=master)](https://travis-ci.org/Producters/video-thumbnail-url)
+
 video-thumbnail-url
 ===========================
 
