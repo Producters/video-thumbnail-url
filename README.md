@@ -23,7 +23,7 @@ getThumb('https://www.youtube.com/watch?v=dQw4w9WgXcQ').then(thumb_url => { // t
 
 ```
 
-# Recognized video url
+# Recognized video urls
 
 ```
 Youtube:
