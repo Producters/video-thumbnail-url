@@ -16,4 +16,4 @@ const INVALID = [
     'https://www.youtube.com'
 ];
 
-testService('youtube', VALID, INVALID, 'http://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg');
+testService('youtube', VALID, INVALID, /^http(s)?\:\/\/img\.youtube\.com\/vi\/([\w-]{10,12})\/hqdefault\.jpg$/);

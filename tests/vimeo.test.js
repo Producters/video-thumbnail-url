@@ -6,6 +6,7 @@ const VALID = [
     'http://player.vimeo.com/video/167195274',
     'http://player.vimeo.com/video/167195274?title=0&amp;byline=0&amp;portrait=0',
     'https://vimeo.com/channels/staffpicks/167195274',
+    'https://vimeo.com/groups/motion/videos/169674362'
 ];
 
 const INVALID = [
@@ -18,4 +19,4 @@ const INVALID = [
     'http://vimeo.com/forums/screening_room/topic:42708'
 ];
 
-testService('vimeo', VALID, INVALID, 'http://i.vimeocdn.com/video/571451344_640.jpg');
+testService('vimeo', VALID, INVALID, /^http(s)?\:\/\/i\.vimeocdn\.com\/video\/(\d)+\_640\.jpg$/);

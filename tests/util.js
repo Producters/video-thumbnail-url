@@ -8,7 +8,7 @@ export function testService(service, valid_urls, invalid_urls, thumb_url) {
         it(`should get thumb url for ${url}`, () => {
             return getThumbnailURL(url).then(result => {
                 should.exist(result);
-                result.should.equal(thumb_url);
+                result.should.match(thumb_url);
             });
         });
     });

@@ -3,7 +3,7 @@ import bluebird from 'bluebird';
 import rp from 'request-promise';
 
 //extract id from url path
-const RE_VIMEO = /^(?:\/video|\/channels\/[\w-]+)?\/(\d+)$/;
+const RE_VIMEO = /^(?:\/video|\/channels\/[\w-]+|\/groups\/[\w-]+\/videos)?\/(\d+)$/;
 const RE_YOUTUBE = /^(?:\/embed)?\/([\w-]{10,12})$/;
 
 export default function getThumbnailURL(url) {
