@@ -31,7 +31,7 @@ function getThumbnailURL(url) {
         //youtube
         if (['www.youtube.com', 'youtube.com', 'youtu.be'].indexOf(urlobj.host) !== -1) {
             var video_id = null;
-            if (urlobj.query.hasOwnProperty('v')) {
+            if ('v' in urlobj.query) {
                 if (urlobj.query.v && urlobj.query.v.match(/^[\w-]{10,12}$/)) {
                     video_id = urlobj.query.v;
                 }
