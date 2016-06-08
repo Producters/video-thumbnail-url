@@ -1,10 +1,10 @@
 {
   "name": "video-thumbnail-url",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "get thumbnail url from video url",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --compilers js:babel-register tests/*.test.js",
+    "test": "npm run compile && mocha --compilers js:babel-register tests/*.test.js",
     "compile": "babel src -d dist",
     "prepublish": "npm run compile"
   },

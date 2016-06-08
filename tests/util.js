@@ -1,5 +1,5 @@
 import should from 'should';
-import getThumbnailURL from '../src';
+import getThumbnailURL from '../index';
 
 export function testService(service, valid_urls, invalid_urls, thumb_url) {
     describe(service, function() {
